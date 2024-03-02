@@ -38,16 +38,6 @@ namespace TODO
                 foreach (var todoItem in user.TODO)
                 {
                     
-
-                   
-
-
-
-                    
-                    
-                    
-                    
-
                     Todo todoControl = new Todo(todoItem);
                     Listtodo.Children.Add(todoControl);
                 }
