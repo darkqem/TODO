@@ -23,12 +23,16 @@
         </Grid.Resources>
         <Border>
             <Grid>
-                <TextBlock Margin="10,10,407,74" Text="Выполнено?" TextAlignment="Left" />
-                <CheckBox x:Name="IsDone"  Margin="173,11,311,74" Visibility="Visible"/>
-                <TextBlock Text="Срок истичения:" Margin="226,9,164,73"/>
-                <TextBlock x:Name="DueTime"  Margin="355,9,0,73"/>
-                <TextBlock x:Name="Task"  Margin="10,50,228,33"/>
-                <TextBlock x:Name="Description"  Margin="10,72,115,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,77">
+                    <TextBlock Text="Выполнено?" TextAlignment="Left" Margin="5,0,10,0" VerticalAlignment="Center" Height="20"/>
+                    <CheckBox x:Name="IsDone" Height="14" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Срок истичения:" Height="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="DueTime" Text="Fri Mar 15 2024 05:00:00 GMT+0500" Height="20" Width="258"/>
+                </StackPanel>
+                <TextBlock Margin="5,35,389,47" Text="Задача : "/>
+                <TextBlock x:Name="Task"  Margin="116,35,0,48"/>
+                <TextBlock x:Name="Description"  Margin="116,68,0,14"/>
+                <TextBlock Margin="5,68,389,14" Text="Пояснение : "/>
             </Grid>
         </Border>
     </Grid>

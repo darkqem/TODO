@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
+using MongoDB.Driver;
+using static TODO.MainWindow;
 
 namespace TODO
 {
@@ -24,13 +27,22 @@ namespace TODO
     /// </summary>
     public partial class Todo : UserControl
     {
+        private object todoItem;
+        
+
+        
+
+        public int Count { get; }
+        public MongoClient Client { get; }
+        
 
         public class TodoItem
         {
             public string Task { get; set; }
             public string Description { get; set; }
-            public bool IsDone { get; set; }
+            public string IsDone { get; set; }
             public string Expire { get; set; }
+            public string TaskId { get; set; }
         }
 
         
@@ -47,17 +59,32 @@ namespace TODO
             {
                 Task = todoArray[0].Split(": ")[1],
                 Description = todoArray[1].Split(": ")[1],
-                
+                IsDone = todoArray[2].Split(": ")[1],
                 Expire = todoArray[3].Split(": ")[1],
+                TaskId = todoArray[4].Split(": ")[1]
             };
 
-            Task.Text = todoArray[0];
-            Description.Text = todoArray[1];
-            DueTime.Text = todoArray[3];
+            var task = todoArray[0].Replace("Task : ", "");
+            var descption = todoArray[1].Replace("Description : ", "");
+            var done = todoArray[2].Replace("Done : ", "");
+            var duetime = todoArray[3].Replace("Expire : ", "");
+            var taskid = todoArray[4].Replace("TaskID : ", "");
 
 
-
-
+            if (done=="true")
+            {
+                IsDone.IsChecked = true;
+            }
+            else
+            {
+                IsDone.IsChecked = false;
+            }
+            Task.Text = task;
+            Description.Text = descption;
+            DueTime.Text = duetime;
         }
+
+
+        
     }
 }

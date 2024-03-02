@@ -11,12 +11,27 @@
             <RowDefinition Height="17*"/>
             <RowDefinition Height="83*"/>
         </Grid.RowDefinitions>
-        <Border x:Name="AddTodo" CornerRadius="5" Background="Transparent" Margin="398,0,10,0" Height="90" VerticalAlignment="Center">
-            <Path x:Name="ColopPickerIcon" Data="{StaticResource Plus}" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Fill="Black" />
-        </Border>
+        <Button x:Name="AddTodo" Margin="407,0,0,0" Background="Transparent" BorderBrush="Transparent"  Height="90" Width="90" Click="BtnAdd_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" CornerRadius="45" Background="Transparent" Width="90" Height="90" VerticalAlignment="Center">
+                        <Path x:Name="ColopPickerIcon" Data="{StaticResource Plus}" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Fill="Black" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="AliceBlue"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <Border  CornerRadius="45" Background="Transparent" Height="86" Width="86" VerticalAlignment="Center">
+                <Path x:Name="ColopPickerIcon" Data="{StaticResource Plus}" Stretch="Fill"  Fill="Black" />
+            </Border>
+        </Button>
+
         <ScrollViewer  Grid.Row="1">
             <StackPanel x:Name="Listtodo" Orientation="Vertical">
-                
+
             </StackPanel>
         </ScrollViewer>
 
