@@ -54,7 +54,7 @@ namespace TODO
             if (selectedDate.HasValue)
             {
                 // Обработка выбранной даты
-                // Например, вывод выбранной даты в консоль
+               
                 string duedate = selectedDate.Value.ToString("dd.MM.yyyy");
             }
         }
