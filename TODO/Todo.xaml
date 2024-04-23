@@ -21,18 +21,25 @@
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>
         </Grid.Resources>
-        <Border>
+        <Border BorderBrush="Black" BorderThickness="1">
             <Grid>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,77">
                     <TextBlock Text="Выполнено?" TextAlignment="Left" Margin="5,0,10,0" VerticalAlignment="Center" Height="20"/>
                     <CheckBox x:Name="IsDone" Height="14" Margin="0,0,10,0" VerticalAlignment="Center"/>
                     <TextBlock Text="Срок истичения:" Height="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="DueTime" Text="Fri Mar 15 2024 05:00:00 GMT+0500" Height="20" Width="258"/>
+                    <TextBlock x:Name="DueTime" Text="Fri Mar 15 2024" Height="20" Width="114"/>
+
+                    <Button Width="100" Height="18" Background="#22000000" Click="DeleteButton_Click">
+                        <TextBlock Text="Удалить?" FontSize="10"/>
+                    </Button>
                 </StackPanel>
                 <TextBlock Margin="5,35,389,47" Text="Задача : "/>
-                <TextBlock x:Name="Task"  Margin="116,35,0,48"/>
-                <TextBlock x:Name="Description"  Margin="116,68,0,14"/>
+                <TextBlock x:Name="Task"  Margin="116,35,149,48"/>
+                <TextBlock x:Name="Description"  Margin="116,68,149,14"/>
                 <TextBlock Margin="5,68,389,14" Text="Пояснение : "/>
+                <Button x:Name="EditButton" Height="18" Click="EditButton_Click" Margin="356,34,37,46" Background="#22000000">
+                    <TextBlock Text="Редактировать?" FontSize="10"/>
+                </Button>
             </Grid>
         </Border>
     </Grid>

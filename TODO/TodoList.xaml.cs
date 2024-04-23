@@ -22,7 +22,7 @@ namespace TODO
     /// </summary>
     public partial class TodoList : Window
     {
-        private string userNickname;
+        public string userNickname;
         private readonly MongoClient client;
 
 
@@ -37,28 +37,10 @@ namespace TODO
             {
                 foreach (var todoItem in user.TODO)
                 {
-                    
 
-
-                   
-
-
-
-                    
-                    
-                    
-                    
-
-                    Todo todoControl = new Todo(todoItem);
+                    Todo todoControl = new Todo(todoItem, userNickname, client, this);
                     Listtodo.Children.Add(todoControl);
-                    Rectangle blackStripe = new Rectangle
-                    {
-                        Fill = Brushes.Black,
-                        Height = 1,
-                        HorizontalAlignment = HorizontalAlignment.Stretch,
-                        VerticalAlignment = VerticalAlignment.Bottom
-                    };
-                    Listtodo.Children.Add(blackStripe);
+                    
                 }
             }
         }
@@ -85,18 +67,11 @@ namespace TODO
             collection.UpdateOne(u => u.nickname == nickname, update);
             user = GetUserByNickname(userNickname);
             var lastTodoItem = user.TODO[user.TODO.Count - 1];
-            Todo todoControl = new Todo(lastTodoItem);
+            Todo todoControl = new Todo(lastTodoItem, userNickname, client, this);
             Listtodo.Children.Add(todoControl);
 
 
-            Rectangle blackStripe = new Rectangle
-            {
-                Fill = Brushes.Black,
-                Height = 1,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Bottom
-            };
-            Listtodo.Children.Add(blackStripe);
+            
         }
 
 
@@ -109,6 +84,9 @@ namespace TODO
             var user = collection.Find(u => u.nickname == nickname).FirstOrDefault();
             return user;
         }
+
+
+        
 
 
 
